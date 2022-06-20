@@ -13,7 +13,7 @@ checkimage
 ### 使用Docker
 
 ```
-docker run -d -p 3027:3027 -name check-image monkeyray/check-image:latest
+docker run -d -p 3027:3027 --name check-image monkeyray/check-image:latest
 ```
 
 ### 使用Docker-Compose
@@ -21,7 +21,7 @@ docker run -d -p 3027:3027 -name check-image monkeyray/check-image:latest
 ```
 > mkdir ~/checkimage
 > cd ~/checkimage
-> cat <<EOF > docker-compose.yaml
+> cat << EOF > docker-compose.yaml
 version: '3'
 services:
   check-image:
