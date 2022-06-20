@@ -1,32 +1,49 @@
 checkimage
 ---------------
 
-    提示：由于该接口用的人不多，又消耗服务器资源，从2021.12.16开始关闭该接口，且代码已开源，有需求自己搭建。
-
-
 本项目是一个图片鉴黄`api`接口，支持`jpg`、`png`、`jpeg`格式文件，参考[nsfwjs][1]。
 
-安装步骤
+### 镜像构建状态
+
+[![构建状态](https://caidog.coding.net/badges/mirai-plugin/job/1401703/build.svg)](https://caidog.coding.net/p/mirai-plugin/ci/job)
+
+使用方法
 ---------------
 
-自行搭建好`ndoejs`环境，使用命令：
+### 使用Docker
 
-    git clone https://github.com/iiiiiii1/checkimage
-    cd checkimage
-    npm i
-    npm i -g pm2
-    pm2 start index.js --name checkimage
+```
+docker run -d -p 3027:3027 -name check-image monkeyray/check-image:latest
+```
+
+### 使用Docker-Compose
+
+```
+> mkdir ~/checkimage
+> cd ~/checkimage
+> cat <<EOF > docker-compose.yaml
+version: '3'
+services:
+  check-image:
+    container_name: check-image
+    image: monkeyray/check-image:latest
+    restart: always
+    ports:
+    - 3027:3027
+EOF
+> docker-compose up -d
+```
 
 访问地址：ip:3027，使用看下方演示。
 
 接口地址
 ---------------
 
-    https://checkimage.querydata.org/api
+    http://127.0.0.1:3027/api
 
 使用示例
 ---------------
-    
+
     #/root/xx.png为图片路径
     curl https://checkimage.querydata.org/api -F "image=@/root/xx.png;type=image/jpeg" 
 
@@ -54,12 +71,14 @@ checkimage
             "probability": 0.0000018030658566203783
         }
     ]
+
 类型参考：
 
     Drawing和Neutral：均为正常图片
     hentai：二次元类型的暴露图片指数
     sexy：露点图片的指数
     porn：就是色情图片的指数
+
 图片指数越高，越接近该类型，最高的基本可以判定为该类型。
 
-  [1]: https://github.com/infinitered/nsfwjs
+[1]: https://github.com/infinitered/nsfwjs
