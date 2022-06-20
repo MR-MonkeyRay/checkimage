@@ -39,13 +39,13 @@ EOF
 接口地址
 ---------------
 
-    http://127.0.0.1:3027/api
+    http://127.0.0.1:3027/api/checkimage
 
 使用示例
 ---------------
 
     #/root/xx.png为图片路径
-    curl https://checkimage.querydata.org/api -F "image=@/root/xx.png;type=image/jpeg" 
+    curl http://127.0.0.1:3027/api/checkimage -F "image=@/root/xx.png;type=image/jpeg" 
 
 返回信息：
 

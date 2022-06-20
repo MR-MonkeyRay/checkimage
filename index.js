@@ -38,7 +38,7 @@ const convert = async (img) => {
   return tf.tensor3d(values, [image.height, image.width, numChannels], 'int32')
 }
 
-app.post('/api', upload.single('image'), async (req, res) => {
+app.post('/api/checkimage', upload.single('image'), async (req, res) => {
   if (!req.file) res.status(400).send('Missing image multipart/form-data')
   else {
     try {
