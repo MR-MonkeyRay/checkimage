@@ -1,4 +1,4 @@
-FROM node:18.4.0-buster-slim
+FROM node:16.15.1-buster-slim
 
 WORKDIR /tmp/checkimage
 COPY . /tmp/checkimage
